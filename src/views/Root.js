@@ -9,6 +9,10 @@ import { PaginationWrapper } from '../components/Pagination/Pagination.styles';
 import MainTemplate from '../components/templates/MainTemplate/MainTemplate';
 import { StyledInput, WrapperInput } from '../components/Input/Input.styles';
 
+import { ReactComponent as RightArrow } from 'assets/icons/icon-right-arr.svg';
+import { ReactComponent as LeftArrow } from 'assets/icons/icon-left-arr.svg';
+import { ReactComponent as Line } from 'assets/icons/icon-line.svg';
+
 const Root = () => {
   const [dataAPI, setData] = useState([]);
 
@@ -119,11 +123,13 @@ const Root = () => {
         </ProductsWrapper>
         <PaginationWrapper>
           <button onClick={prevPage} disabled={page === 1}>
-            <strong>Previous Page</strong>
+            {page === 1 ? <Line /> : <LeftArrow />}
           </button>
-          <span>{page}</span>
+          <span>
+            {page} / {totalPages}
+          </span>
           <button onClick={nextPage} disabled={page === totalPages}>
-            <strong>Next Page</strong>
+            {page === totalPages ? <Line /> : <RightArrow />}
           </button>
         </PaginationWrapper>
       </MainTemplate>
