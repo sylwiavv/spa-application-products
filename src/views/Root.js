@@ -31,6 +31,7 @@ const Root = () => {
 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState('');
+  const [shouldReset, setShouldReset] = useState(false);
 
   useEffect(() => {
     axios
@@ -38,10 +39,12 @@ const Root = () => {
       .then(({ data }) => {
         setData(data);
         setTotalPages(data.total_pages);
-        // console.log(totalPages);
+        setShouldReset(false);
       })
       .catch((error) => {});
-  }, [page]);
+  }, [page, shouldReset]);
+
+  console.log(shouldReset);
 
   const nextPage = () => {
     if (totalPages > page) {
@@ -55,53 +58,58 @@ const Root = () => {
     }
   };
 
+  const reset = () => {
+    setShouldReset(true);
+    setPage(1);
+  };
+
   const handleButtonSearch = () => {
     if (inputValue !== '') {
-      console.log('pusty');
       axios
         .get('https://reqres.in/api/products', { params: { id: inputValue } })
         .then(({ data }) => {
           console.log({ data: [data.data] });
           setData({ data: [data.data] });
+          console.log('button');
         })
         .catch((error) => {});
       setInputValue('');
+      setShouldReset(false);
     }
   };
 
   const [inputValue, setInputValue] = useState('');
 
   const onChangeHandler = (e) => {
-    const result = e.replace(/\D/g, '');
+    const result = e.replace(/[^0-9]/g, '');
     setInputValue(result);
   };
 
   const handleKeyDown = (e) => {
-    const inputText = e.target.value;
+    let inputText = e.target.value;
     if (inputText !== '') {
       if (e.keyCode === 13) {
         setInputValue(inputText);
         handleButtonSearch();
       }
     }
-    setInputValue('');
   };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <MainTemplate>
-        <h1>Hello</h1>
+        <h1>Products list</h1>
         <WrapperInput>
           <StyledInput
             id="input-autocomplete"
-            type="text"
             placeholder="Choose your color id"
             value={inputValue}
             onChange={(e) => onChangeHandler(e.target.value)}
             onKeyDown={handleKeyDown}
           />
           <button onClick={handleButtonSearch}>Search</button>
+          <button onClick={reset}>Reset</button>
         </WrapperInput>
         <WrapperProperties>
           <strong>Id</strong>
