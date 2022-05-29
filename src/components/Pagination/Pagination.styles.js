@@ -8,19 +8,27 @@ export const PaginationWrapper = styled.div`
   margin: 16px auto;
 
   button {
-    //background-color: red;
-    background-color: olivedrab;
-    border: 2px solid lightgray;
-    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    position: relative;
     padding: 8px;
+    width: 48px;
 
     &:disabled,
     &[disabled] {
-      background-color: lightgray;
+      //background-color: transparent;
     }
 
     &:hover {
       cursor: pointer;
+    }
+
+    svg {
+      height: 24px;
+      width: 48px;
     }
   }
 

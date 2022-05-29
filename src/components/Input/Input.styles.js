@@ -5,12 +5,11 @@ export const StyledInput = styled.input`
   padding: 4px 8px;
   border-radius: 4px;
   border: 1px solid gray;
-  margin-right: 16px;
+  margin-right: 8px;
 
   display: flex;
   align-self: flex-start;
   text-align: start;
-  flex: 1;
 
   min-width: max-content;
   width: 200px;
