@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
-import { api, endpoints, params } from 'api';
-import { ProductsWrapper, Product, WrapperProperties } from '../components/ProductWrapper/ProductWrapper.styles';
-import axios from 'axios';
-import { PaginationWrapper } from '../components/Pagination/Pagination.styles';
 import MainTemplate from '../components/templates/MainTemplate/MainTemplate';
-import { StyledInput, WrapperInput } from '../components/Input/Input.styles';
-
-import { ReactComponent as RightArrow } from 'assets/icons/icon-right-arr.svg';
-import { ReactComponent as LeftArrow } from 'assets/icons/icon-left-arr.svg';
-import { ReactComponent as Line } from 'assets/icons/icon-line.svg';
+import { ListContext, GlobalContext } from 'provides/GlobalContext.js';
+import Products from '../components/ProductWrapper/Products';
+import InputWr from '../components/Input/InputWr';
+import Pagination from '../components/Pagination/Pagination';
 
 const Root = () => {
-  const [dataAPI, setData] = useState([]);
-
   // useEffect(() => {
   //   // .get(endpoints.products, { page: 1, limit: 2, id: 2 })
   //   api
@@ -28,119 +21,36 @@ const Root = () => {
   //       // console.log(error);
   //     });
   // }, []);
-
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState('');
-  const [shouldReset, setShouldReset] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get('https://reqres.in/api/products', { params: { per_page: 5, page } })
-      .then(({ data }) => {
-        setData(data);
-        setTotalPages(data.total_pages);
-        setShouldReset(false);
-      })
-      .catch((error) => {});
-  }, [page, shouldReset]);
-
-  console.log(shouldReset);
-
-  const nextPage = () => {
-    if (totalPages > page) {
-      setPage(page + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  const reset = () => {
-    setShouldReset(true);
-    setPage(1);
-  };
-
-  const handleButtonSearch = () => {
-    if (inputValue !== '') {
-      axios
-        .get('https://reqres.in/api/products', { params: { id: inputValue } })
-        .then(({ data }) => {
-          console.log({ data: [data.data] });
-          setData({ data: [data.data] });
-          console.log('button');
-        })
-        .catch((error) => {});
-      setInputValue('');
-      setShouldReset(false);
-    }
-  };
-
-  const [inputValue, setInputValue] = useState('');
-
-  const onChangeHandler = (e) => {
-    const result = e.replace(/[^0-9]/g, '');
-    setInputValue(result);
-  };
-
-  const handleKeyDown = (e) => {
-    let inputText = e.target.value;
-    if (inputText !== '') {
-      if (e.keyCode === 13) {
-        setInputValue(inputText);
-        handleButtonSearch();
-      }
-    }
-  };
-
+  const {
+    nextPage,
+    prevPage,
+    reset,
+    onChangeHandler,
+    handleKeyDown,
+    handleButtonSearch,
+    dataAPI,
+    setData,
+    page,
+    setPage,
+    totalPages,
+    setTotalPages,
+    shouldReset,
+    setShouldReset,
+    inputValue,
+    setInputValue,
+  } = useContext(ListContext);
+  console.log(totalPages);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <MainTemplate>
-        <h1>Products list</h1>
-        <WrapperInput>
-          <StyledInput
-            id="input-autocomplete"
-            placeholder="Choose your color id"
-            value={inputValue}
-            onChange={(e) => onChangeHandler(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button onClick={handleButtonSearch}>Search</button>
-          <button onClick={reset}>Reset</button>
-        </WrapperInput>
-        <WrapperProperties>
-          <strong>Id</strong>
-          <strong>Name</strong>
-          <strong>Year</strong>
-        </WrapperProperties>
-        <ProductsWrapper>
-          {dataAPI.data ? (
-            dataAPI.data.map(({ id, name, color, year }) => (
-              <Product key={id} color={color}>
-                <span>{id}</span>
-                <h2>{name}</h2>
-                <p>{year}</p>
-              </Product>
-            ))
-          ) : (
-            <h1>No available products</h1>
-          )}
-        </ProductsWrapper>
-        <PaginationWrapper>
-          <button onClick={prevPage} disabled={page === 1}>
-            {page === 1 ? <Line /> : <LeftArrow />}
-          </button>
-          <span>
-            {page} / {totalPages}
-          </span>
-          <button onClick={nextPage} disabled={page === totalPages}>
-            {page === totalPages ? <Line /> : <RightArrow />}
-          </button>
-        </PaginationWrapper>
-      </MainTemplate>
+      <GlobalContext>
+        <MainTemplate>
+          <h1>Products list</h1>
+          <InputWr />
+          <Products />
+          <Pagination />
+        </MainTemplate>
+      </GlobalContext>
     </ThemeProvider>
   );
 };
