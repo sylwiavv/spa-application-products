@@ -5,11 +5,8 @@ export const ProductsWrapper = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 16px;
-  padding: 0 16px;
-  margin: 0;
-
-  max-width: 990px;
-  margin: auto;
+  margin-bottom: 16px;
+  padding: 0;
 `;
 
 export const Product = styled.li`
