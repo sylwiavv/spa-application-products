@@ -52,13 +52,35 @@ const Root = () => {
   };
 
   const handleButtonSearch = () => {
-    axios
-      .get('https://reqres.in/api/products', { params: { id: 4 } })
-      .then(({ data }) => {
-        console.log([data.data]);
-        setData({ data: [data.data] });
-      })
-      .catch((error) => {});
+    if (inputValue !== '') {
+      console.log('pusty');
+      axios
+        .get('https://reqres.in/api/products', { params: { id: inputValue } })
+        .then(({ data }) => {
+          console.log({ data: [data.data] });
+          setData({ data: [data.data] });
+        })
+        .catch((error) => {});
+      setInputValue('');
+    }
+  };
+
+  const [inputValue, setInputValue] = useState('');
+
+  const onChangeHandler = (e) => {
+    const result = e.replace(/\D/g, '');
+    setInputValue(result);
+  };
+
+  const handleKeyDown = (e) => {
+    const inputText = e.target.value;
+    if (inputText !== '') {
+      if (e.keyCode === 13) {
+        setInputValue(inputText);
+        handleButtonSearch();
+      }
+    }
+    setInputValue('');
   };
 
   return (
@@ -66,16 +88,14 @@ const Root = () => {
       <GlobalStyle />
       <MainTemplate>
         <h1>Hello</h1>
-        {/*{console.log(dataAPI.data.length)}*/}
-        {/*<StyledInput />*/}
         <WrapperInput>
           <StyledInput
             id="input-autocomplete"
             type="text"
             placeholder="Choose your color id"
-            // onChange={(e) => onChangeHandler(e.target.value)}
-            // value={inputText === undefined ? results[activeSuggestion] : inputText}
-            // onKeyDown={handleKeyDown}
+            value={inputValue}
+            onChange={(e) => onChangeHandler(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <button onClick={handleButtonSearch}>Search</button>
         </WrapperInput>
@@ -84,7 +104,6 @@ const Root = () => {
           <strong>Name</strong>
           <strong>Year</strong>
         </WrapperProperties>
-        {console.log(dataAPI)}
         <ProductsWrapper>
           {dataAPI.data ? (
             dataAPI.data.map(({ id, name, color, year }) => (

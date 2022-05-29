@@ -17,6 +17,7 @@ export const Product = styled.li`
   justify-content: flex-end;
   align-items: end;
   flex-direction: column;
+  margin-bottom: 2px;
 
   position: relative;
   //min-height: 80px;
