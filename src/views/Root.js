@@ -3,11 +3,11 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import { api, endpoints, params } from 'api';
-import { ProductsWrapper, Product } from '../components/ProductWrapper/ProductWrapper.styles';
+import { ProductsWrapper, Product, WrapperProperties } from '../components/ProductWrapper/ProductWrapper.styles';
 import axios from 'axios';
 import { PaginationWrapper } from '../components/Pagination/Pagination.styles';
 import MainTemplate from '../components/templates/MainTemplate/MainTemplate';
-import { StyledInput } from '../components/Input/Input.styles';
+import { StyledInput, WrapperInput } from '../components/Input/Input.styles';
 
 const Root = () => {
   const [dataAPI, setData] = useState([]);
@@ -43,18 +43,22 @@ const Root = () => {
     if (totalPages > page) {
       setPage(page + 1);
     }
-    if (totalPages === page) {
-      console.log('last');
-    }
   };
 
   const prevPage = () => {
     if (page > 1) {
       setPage(page - 1);
     }
-    if (page === 1) {
-      console.log('pierwsza');
-    }
+  };
+
+  const handleButtonSearch = () => {
+    axios
+      .get('https://reqres.in/api/products', { params: { id: 4 } })
+      .then(({ data }) => {
+        console.log([data.data]);
+        setData({ data: [data.data] });
+      })
+      .catch((error) => {});
   };
 
   return (
@@ -63,13 +67,31 @@ const Root = () => {
       <MainTemplate>
         <h1>Hello</h1>
         {/*{console.log(dataAPI.data.length)}*/}
-        <StyledInput />
+        {/*<StyledInput />*/}
+        <WrapperInput>
+          <StyledInput
+            id="input-autocomplete"
+            type="text"
+            placeholder="Choose your color id"
+            // onChange={(e) => onChangeHandler(e.target.value)}
+            // value={inputText === undefined ? results[activeSuggestion] : inputText}
+            // onKeyDown={handleKeyDown}
+          />
+          <button onClick={handleButtonSearch}>Search</button>
+        </WrapperInput>
+        <WrapperProperties>
+          <strong>Id</strong>
+          <strong>Name</strong>
+          <strong>Year</strong>
+        </WrapperProperties>
+        {console.log(dataAPI)}
         <ProductsWrapper>
           {dataAPI.data ? (
-            dataAPI.data.map(({ id, name, color }) => (
+            dataAPI.data.map(({ id, name, color, year }) => (
               <Product key={id} color={color}>
                 <span>{id}</span>
                 <h2>{name}</h2>
+                <p>{year}</p>
               </Product>
             ))
           ) : (
