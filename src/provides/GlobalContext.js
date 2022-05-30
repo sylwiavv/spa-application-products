@@ -29,8 +29,6 @@ const GlobalContext = ({ children }) => {
       .catch((error) => {});
   }, [page, shouldReset]);
 
-  console.log(shouldReset);
-
   const nextPage = () => {
     if (totalPages > page) {
       setPage(page + 1);
@@ -53,9 +51,7 @@ const GlobalContext = ({ children }) => {
       axios
         .get('https://reqres.in/api/products', { params: { id: inputValue } })
         .then(({ data }) => {
-          console.log({ data: [data.data] });
           setData({ data: [data.data] });
-          console.log('button');
         })
         .catch((error) => {});
       setInputValue('');

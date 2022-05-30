@@ -9,7 +9,7 @@ const InputWr = () => {
     <WrapperInput>
       <StyledInput
         id="input-autocomplete"
-        placeholder="Choose your color id"
+        placeholder="Enter your color id"
         value={inputValue}
         onChange={(e) => onChangeHandler(e.target.value)}
         onKeyDown={handleKeyDown}

@@ -12,7 +12,7 @@ const Products = () => {
         <strong>Name</strong>
         <strong>Year</strong>
       </WrapperProperties>
-      <ProductsWrapper>
+      <ProductsWrapper data-testid="products-wrapper">
         {dataAPI.data ? (
           dataAPI.data.map(({ id, name, color, year }) => (
             <Product key={id} color={color}>

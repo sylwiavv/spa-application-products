@@ -21,25 +21,6 @@ const Root = () => {
   //       // console.log(error);
   //     });
   // }, []);
-  const {
-    nextPage,
-    prevPage,
-    reset,
-    onChangeHandler,
-    handleKeyDown,
-    handleButtonSearch,
-    dataAPI,
-    setData,
-    page,
-    setPage,
-    totalPages,
-    setTotalPages,
-    shouldReset,
-    setShouldReset,
-    inputValue,
-    setInputValue,
-  } = useContext(ListContext);
-  console.log(totalPages);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
