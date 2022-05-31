@@ -7,9 +7,3 @@ export const api = axios.create({
 export const endpoints = {
   products: '/products',
 };
-
-export const params = {
-  page: 'page',
-  limit: 'per_page',
-  id: 'id',
-};

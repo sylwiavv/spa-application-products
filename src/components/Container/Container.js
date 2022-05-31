@@ -3,6 +3,7 @@ import Form from '../Form/Form';
 import ProductsList from '../ProductsList/ProductsList';
 import Pagination from '../Pagination/Pagination';
 import axios from 'axios';
+import { api, endpoints } from '../../api';
 
 const Container = () => {
   const [inputValue, setInputValue] = useState('');
@@ -13,8 +14,8 @@ const Container = () => {
 
   useEffect(() => {
     if (page !== null) {
-      axios
-        .get('https://reqres.in/api/products', { params: { per_page: 5, page } })
+      api
+        .get(endpoints.products, { params: { per_page: 5, page } })
         .then(({ data }) => {
           setData(data.data);
           setTotalPages(data.total_pages);
@@ -27,7 +28,7 @@ const Container = () => {
     e.preventDefault();
     if (inputValue !== '') {
       axios
-        .get('https://reqres.in/api/products', { params: { id: inputValue } })
+        .get(endpoints.products, { params: { id: inputValue } })
         .then(({ data }) => {
           setData([data.data]);
         })
