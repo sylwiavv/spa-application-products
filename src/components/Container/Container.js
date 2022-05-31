@@ -27,7 +27,7 @@ const Container = () => {
   const onSearch = (e) => {
     e.preventDefault();
     if (inputValue !== '') {
-      axios
+      api
         .get(endpoints.products, { params: { id: inputValue } })
         .then(({ data }) => {
           setData([data.data]);
