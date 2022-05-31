@@ -1,7 +1,7 @@
 import React from 'react';
-import { TR, TD } from './ProductWrapper.styles';
+import { TR } from './ProductsList.styles';
 
-const Products = ({ products }) => {
+const ProductsList = ({ products }) => {
   return (
     <table>
       <thead>
@@ -12,10 +12,10 @@ const Products = ({ products }) => {
         </tr>
       </thead>
       <tbody>
-        {products.data ? (
-          products.data.map(({ id, name, color, year }) => (
+        {products.length > 0 ? (
+          products.map(({ id, name, color, year }) => (
             <TR key={id} color={color}>
-              <TD color={color}>{id}</TD>
+              <td color={color}>{id}</td>
               <td>{name}</td>
               <td>{year}</td>
             </TR>
@@ -30,4 +30,4 @@ const Products = ({ products }) => {
   );
 };
 
-export default Products;
+export default ProductsList;

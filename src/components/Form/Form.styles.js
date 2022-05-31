@@ -24,7 +24,7 @@ export const Input = styled.input`
   }
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
   display: flex;
 `;
 
