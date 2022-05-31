@@ -23,7 +23,7 @@ const Container = () => {
     }
   }, [page]);
 
-  const handleButtonSearch = (e) => {
+  const onSearch = (e) => {
     e.preventDefault();
     if (inputValue !== '') {
       axios
@@ -37,7 +37,7 @@ const Container = () => {
     }
   };
 
-  const handleInputOnChange = (e) => {
+  const onInputChange = (e) => {
     const result = e.target.value.replace(/[^0-9]/g, '');
     setInputValue(result);
   };
@@ -54,16 +54,15 @@ const Container = () => {
     }
   };
 
-  const reset = () => {
+  const onReset = () => {
     setPage(1);
   };
 
   return (
     <>
-      <Form value={inputValue} handleInputOnChange={handleInputOnChange} handleButtonSearch={handleButtonSearch} reset={reset} />
+      <Form value={inputValue} onInputChange={onInputChange} onSearch={onSearch} onReset={onReset} />
       <ProductsList products={dataAPI} />
-      {/*{page !== null ? <Pagination page={page} totalPages={totalPages} prevPage={prevPage} nextPage={nextPage} /> : null}*/}
-      {page !== null && <Pagination page={page} totalPages={totalPages} prevPage={onPrevPage} nextPage={onNextPage} />}
+      {page && <Pagination page={page} totalPages={totalPages} onPrevPage={onPrevPage} onNextPage={onNextPage} />}
     </>
   );
 };

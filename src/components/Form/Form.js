@@ -1,17 +1,17 @@
 import { Input, Label, FormWrapper, InputWrapper } from './Form.styles';
 import React from 'react';
 
-const Form = ({ value, handleInputOnChange, handleButtonSearch, reset }) => {
+const Form = ({ value, onInputChange, onSearch, onReset }) => {
   return (
     <FormWrapper>
-      <InputWrapper onSubmit={handleButtonSearch}>
+      <InputWrapper onSubmit={onSearch}>
         <Label htmlFor="input" />
-        <Input value={value} onChange={handleInputOnChange} placeholder="Enter your color number" />
+        <Input value={value} onChange={onInputChange} placeholder="Enter your color number" />
       </InputWrapper>
-      <button type="submit" onClick={handleButtonSearch}>
+      <button type="submit" onClick={onSearch}>
         Search
       </button>
-      <button onClick={reset}>Reset</button>
+      <button onClick={onReset}>Reset</button>
     </FormWrapper>
   );
 };
