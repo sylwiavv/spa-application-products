@@ -48,3 +48,17 @@ export const WrapperProperties = styled.div`
   justify-items: center;
   padding: 0 8px;
 `;
+
+export const styledTr = styled.tr`
+  display: contents;
+  background-color: ${({ color }) => color};
+`;
+
+export const TR = styled.tr`
+  //display: contents;
+  background-color: ${({ color }) => color};
+`;
+
+export const TD = styled.td`
+  // background-color: ${({ color }) => color};
+`;

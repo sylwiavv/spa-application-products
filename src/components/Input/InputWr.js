@@ -1,22 +1,18 @@
-import { StyledInput, WrapperInput } from './Input.styles';
-import React, { useContext } from 'react';
-import { ListContext } from '../../provides/GlobalContext';
+import { Input, Label, FormWrapper, InputWrapper } from './Input.styles';
+import React from 'react';
 
-const InputWr = () => {
-  const { inputValue, onChangeHandler, handleKeyDown, reset, handleButtonSearch } = useContext(ListContext);
-
+const InputWr = ({ value, onChange, handleButtonSearch, reset, handleKeyDown }) => {
   return (
-    <WrapperInput>
-      <StyledInput
-        id="input-autocomplete"
-        placeholder="Enter your color id"
-        value={inputValue}
-        onChange={(e) => onChangeHandler(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={handleButtonSearch}>Search</button>
+    <FormWrapper>
+      <InputWrapper as="form" onSubmit={handleButtonSearch}>
+        <Label htmlFor="input" />
+        <Input value={value} onChange={onChange} placecholder="Enter your color number" />
+      </InputWrapper>
+      <button type="submit" onClick={handleButtonSearch}>
+        Search
+      </button>
       <button onClick={reset}>Reset</button>
-    </WrapperInput>
+    </FormWrapper>
   );
 };
 

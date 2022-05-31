@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledInput = styled.input`
+export const Input = styled.input`
   height: 40px;
   padding: 4px 8px;
   border-radius: 4px;
@@ -24,15 +24,18 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const WrapperInput = styled.div`
+export const InputWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  width: 70%;
+`;
+
+export const Label = styled.label`
+  display: flex;
+`;
+
+export const FormWrapper = styled.div`
+  display: flex;
 
   button {
-    width: 200px;
-    height: 40px;
+    margin-left: 8px;
   }
 `;

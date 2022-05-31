@@ -1,31 +1,32 @@
-import React, { useContext } from 'react';
-import { Product, ProductsWrapper, WrapperProperties } from './ProductWrapper.styles';
-import { ListContext } from '../../provides/GlobalContext';
+import React from 'react';
+import { TR, TD } from './ProductWrapper.styles';
 
-const Products = () => {
-  const { dataAPI } = useContext(ListContext);
-
+const Products = ({ products }) => {
   return (
-    <>
-      <WrapperProperties>
-        <strong>Id</strong>
-        <strong>Name</strong>
-        <strong>Year</strong>
-      </WrapperProperties>
-      <ProductsWrapper data-testid="products-wrapper">
-        {dataAPI.data ? (
-          dataAPI.data.map(({ id, name, color, year }) => (
-            <Product key={id} color={color}>
-              <span>{id}</span>
-              <h2>{name}</h2>
-              <p>{year}</p>
-            </Product>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.data ? (
+          products.data.map(({ id, name, color, year }) => (
+            <TR key={id} color={color}>
+              <TD color={color}>{id}</TD>
+              <td>{name}</td>
+              <td>{year}</td>
+            </TR>
           ))
         ) : (
-          <h1>No available products</h1>
+          <tr>
+            <td>No available products</td>
+          </tr>
         )}
-      </ProductsWrapper>
-    </>
+      </tbody>
+    </table>
   );
 };
 

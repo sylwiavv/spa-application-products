@@ -21,4 +21,23 @@ export const GlobalStyle = createGlobalStyle`
   a, button {
     font-family: 'Montserrat', sans-serif; 
   }
+
+  table {
+    max-width: 680px;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+  }
+  
+  thead > tr,
+  tbody > tr {
+    display: grid;
+    grid-template-columns:
+    minmax(50px, 1fr)
+    minmax(150px, 3.33fr)
+    minmax(150px, 1.67fr);
+    text-align: left;
+  }
 `;

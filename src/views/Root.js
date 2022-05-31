@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import MainTemplate from '../components/templates/MainTemplate/MainTemplate';
-import { ListContext, GlobalContext } from 'provides/GlobalContext.js';
-import Products from '../components/ProductWrapper/Products';
-import InputWr from '../components/Input/InputWr';
-import Pagination from '../components/Pagination/Pagination';
+import Container from '../components/Container/Container';
 
 const Root = () => {
   // useEffect(() => {
@@ -24,14 +21,10 @@ const Root = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <GlobalContext>
-        <MainTemplate>
-          <h1>Products list</h1>
-          <InputWr />
-          <Products />
-          <Pagination />
-        </MainTemplate>
-      </GlobalContext>
+      <MainTemplate>
+        <h1>Products list</h1>
+        <Container />
+      </MainTemplate>
     </ThemeProvider>
   );
 };
