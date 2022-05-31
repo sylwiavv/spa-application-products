@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/spa-application-products/static/css/main.57c80c35.css",
-    "main.js": "/spa-application-products/static/js/main.107299c8.js",
+    "main.js": "/spa-application-products/static/js/main.1f32f6de.js",
+    "static/media/icon-prev-arrow.svg": "/spa-application-products/static/media/icon-prev-arrow.9d6a0ce00f2b27faa5b77e96645d1d40.svg",
+    "static/media/icon-next-arrow.svg": "/spa-application-products/static/media/icon-next-arrow.665d6191f0ab3c5a66cf7a999b147349.svg",
     "index.html": "/spa-application-products/index.html",
-    "static/media/icon-right-arr.svg": "/spa-application-products/static/media/icon-right-arr.9182ac1b6f494bc4304f0df71d8f4a9f.svg",
-    "static/media/icon-left-arr.svg": "/spa-application-products/static/media/icon-left-arr.4a39cef6573445a14f8c9870dc69fd80.svg",
-    "static/media/icon-line.svg": "/spa-application-products/static/media/icon-line.14872aa4a99af6609db0cca1a6b0686c.svg",
-    "main.107299c8.js.map": "/spa-application-products/static/js/main.107299c8.js.map"
+    "static/media/icon-line.svg": "/spa-application-products/static/media/icon-line.a9966b42f355451ce95d2a5924a874ff.svg",
+    "main.1f32f6de.js.map": "/spa-application-products/static/js/main.1f32f6de.js.map"
   },
   "entrypoints": [
     "static/css/main.57c80c35.css",
-    "static/js/main.107299c8.js"
+    "static/js/main.1f32f6de.js"
   ]
 }
