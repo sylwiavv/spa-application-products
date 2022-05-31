@@ -1,4 +1,4 @@
-import { Input, Label, FormWrapper, InputWrapper } from './Form.styles';
+import { Input, Label, FormWrapper, InputWrapper, SearchButton, ResentButton } from './Form.styles';
 import React from 'react';
 
 const Form = ({ value, onInputChange, onSearch, onReset }) => {
@@ -8,10 +8,10 @@ const Form = ({ value, onInputChange, onSearch, onReset }) => {
         <Label htmlFor="input" />
         <Input value={value} onChange={onInputChange} placeholder="Enter your color number" />
       </InputWrapper>
-      <button type="submit" onClick={onSearch}>
+      <SearchButton type="submit" onClick={onSearch}>
         Search
-      </button>
-      <button onClick={onReset}>Reset</button>
+      </SearchButton>
+      <ResentButton onClick={onReset}>Reset</ResentButton>
     </FormWrapper>
   );
 };

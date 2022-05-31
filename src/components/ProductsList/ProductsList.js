@@ -1,32 +1,32 @@
 import React from 'react';
-import { TR } from './ProductsList.styles';
+import { TABLE, TR, THEAD, THEADtr, THEADth, TBODY, TBODYtr, TBODYtd } from './ProductsList.styles';
 
 const ProductsList = ({ products }) => {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Year</th>
-        </tr>
-      </thead>
-      <tbody>
+    <TABLE>
+      <THEAD>
+        <THEADtr>
+          <THEADth>ID</THEADth>
+          <THEADth>Name</THEADth>
+          <THEADth>Year</THEADth>
+        </THEADtr>
+      </THEAD>
+      <TBODY>
         {products.length > 0 ? (
           products.map(({ id, name, color, year }) => (
-            <TR key={id} color={color}>
-              <td color={color}>{id}</td>
-              <td>{name}</td>
-              <td>{year}</td>
-            </TR>
+            <TBODYtr key={id} color={color}>
+              <TBODYtd>{id}</TBODYtd>
+              <TBODYtd className="name">{name}</TBODYtd>
+              <TBODYtd>{year}</TBODYtd>
+            </TBODYtr>
           ))
         ) : (
-          <tr>
-            <td>No available products</td>
-          </tr>
+          <TBODYtr>
+            <TBODYtd>No available products</TBODYtd>
+          </TBODYtr>
         )}
-      </tbody>
-    </table>
+      </TBODY>
+    </TABLE>
   );
 };
 

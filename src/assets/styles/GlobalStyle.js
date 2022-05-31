@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     margin: 0;
-    color: #122332;
+    color: ${({ theme }) => theme.colors.mainFontColor};
+    background-color: ${({ theme }) => theme.colors.mainBgColor};
   }
   
   html,
@@ -17,8 +18,15 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   
-  body,
-  a, button {
-    font-family: 'Montserrat', sans-serif; 
+  * {
+      font-family: 'Montserrat', sans-serif; 
+    }
+  
+  input {
+    border: 1px solid ${({ theme }) => theme.colors.mainBorderColor};
+  }
+  
+  input::placeholder {
+    font-size: 13px;
   }
 `;

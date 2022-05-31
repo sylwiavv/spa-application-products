@@ -1,21 +1,18 @@
 export const theme = {
   colors: {
-    white: '#FFFFFF',
-    lightGrey: '#F7F8FA',
-    grey: '#C0C7D6',
-    darkGrey: '#737C8E',
-    black: '#060d1c',
-    success: '#8FCB81',
-    error: '#FF8383',
-    warning: '#E1D888',
-    darkPurple: '#C0C7D6',
-    lightPurple: '#ECEFF7',
+    mainBgColor: '#fefefe',
+    mainFontColor: '#142136',
+    mainButtonBgColor: '#0a1527',
+    mainButtonBgColorSecondary: '#8fadbb',
+    mainBorderColor: '#e3dfdf',
   },
-  fontSize: {
-    xxl: '34px',
-    xl: '24px',
-    l: '17px',
-    m: '12px',
-    s: '11px',
+  boxShadow: {
+    primary: '0px 8px 20px rgb(0 0 0 / 6%)',
+  },
+  mq: {
+    tablet: '@media (min-width: 500px)',
+    desktop: '@media (min-width: 768px)',
+    bigDesktop: '@media (min-width: 1280px)',
+    huge: '@media(min-width: 1440px)',
   },
 };
