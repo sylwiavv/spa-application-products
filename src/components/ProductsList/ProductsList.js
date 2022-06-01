@@ -1,7 +1,9 @@
 import React from 'react';
-import { TABLE, TR, THEAD, THEADtr, THEADth, TBODY, TBODYtr, TBODYtd } from './ProductsList.styles';
+import { TABLE, THEAD, THEADtr, THEADth, TBODY, TBODYtr, TBODYtd } from './ProductsList.styles';
+import PropTypes from 'prop-types';
 
 const ProductsList = ({ products }) => {
+  console.log(products);
   return (
     <TABLE>
       <THEAD>
@@ -28,6 +30,10 @@ const ProductsList = ({ products }) => {
       </TBODY>
     </TABLE>
   );
+};
+
+ProductsList.propTypes = {
+  products: PropTypes.array,
 };
 
 export default ProductsList;

@@ -3,6 +3,8 @@ import { ReactComponent as Line } from '../../assets/icons/icon-line.svg';
 import { ReactComponent as LeftArrow } from '../../assets/icons/icon-left-arr.svg';
 import { ReactComponent as RightArrow } from '../../assets/icons/icon-right-arr.svg';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Form from '../Form/Form';
 
 const Pagination = ({ onNextPage, onPrevPage, totalPages, page }) => {
   return (
@@ -19,6 +21,13 @@ const Pagination = ({ onNextPage, onPrevPage, totalPages, page }) => {
       </button>
     </PaginationWrapper>
   );
+};
+
+Pagination.propTypes = {
+  page: PropTypes.number,
+  totalPages: PropTypes.number,
+  onNextPage: PropTypes.func,
+  onPrevPage: PropTypes.func,
 };
 
 export default Pagination;
