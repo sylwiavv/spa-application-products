@@ -78,6 +78,7 @@ export const PaginationWrapperPage = styled.div`
 
 export const PaginationActualPage = styled.div`
   position: relative;
+  font-weight: 700;
 
   &:after {
     content: ' / ';
@@ -88,5 +89,4 @@ export const PaginationActualPage = styled.div`
 
 export const PaginationTotalPage = styled.div`
   margin-left: 4px;
-  font-weight: 700;
 `;
