@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const InputWrapper = styled.form`
   display: flex;
@@ -12,8 +13,9 @@ export const Input = styled.input`
   height: 40px;
   padding: 4px 8px;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
+  transition: border, 0.2s;
 
   display: flex;
   align-self: flex-start;
@@ -25,6 +27,7 @@ export const Input = styled.input`
   &:focus,
   &:hover {
     outline: none;
+    border: 1px solid ${({ theme }) => theme.boxShadow.mainButtonBgColor};
   }
   &::placeholder {
     text-align: start;
@@ -50,6 +53,7 @@ export const FormWrapper = styled.div`
     border-radius: 4px;
     min-width: 120px;
     padding: 8px;
+    transition: background-color 0.2s;
 
     &:hover {
       cursor: pointer;
@@ -67,6 +71,10 @@ export const SearchButton = styled.button`
   background-color: ${({ theme }) => theme.colors.mainButtonBgColor};
   margin-bottom: 8px;
 
+  &:hover {
+    background-color: ${({ theme }) => darken(0.2, theme.colors.mainButtonBgColor)};
+  }
+
   ${({ theme }) => theme.mq.tablet} {
     margin-bottom: 0;
     margin-right: 8px;
@@ -74,6 +82,10 @@ export const SearchButton = styled.button`
 `;
 
 export const ResentButton = styled.button`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.mainButtonBgColorSecondary};
   border: 1px solid ${({ theme }) => theme.colors.mainButtonBgColor};
+
+  &:hover {
+    background-color: ${({ theme }) => darken(0.1, theme.colors.mainButtonBgColorSecondary)};
+  }
 `;

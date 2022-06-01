@@ -1,7 +1,7 @@
 import { PaginationWrapper, PaginationWrapperPage, PaginationActualPage, PaginationTotalPage } from './Pagination.styles';
 import { ReactComponent as Line } from '../../assets/icons/icon-line.svg';
-import { ReactComponent as LeftArrow } from '../../assets/icons/icon-prev-arrow.svg';
-import { ReactComponent as RightArrow } from '../../assets/icons/icon-next-arrow.svg';
+import { ReactComponent as LeftArrow } from '../../assets/icons/icon-left-arr.svg';
+import { ReactComponent as RightArrow } from '../../assets/icons/icon-right-arr.svg';
 import React from 'react';
 
 const Pagination = ({ onNextPage, onPrevPage, totalPages, page }) => {

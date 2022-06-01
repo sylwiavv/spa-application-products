@@ -2,9 +2,11 @@ export const theme = {
   colors: {
     mainBgColor: '#fefefe',
     mainFontColor: '#142136',
-    mainButtonBgColor: '#0a1527',
-    mainButtonBgColorSecondary: '#8fadbb',
+    mainButtonBgColor: '#0e1d36',
+    mainButtonBgColorSecondary: '#fff',
     mainBorderColor: '#e3dfdf',
+    mainIconArr: '#0e1d36',
+    mainIconLine: '#b9b6b6',
   },
   boxShadow: {
     primary: '0px 8px 20px rgb(0 0 0 / 6%)',

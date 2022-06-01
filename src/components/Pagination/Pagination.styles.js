@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const PaginationWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   justify-content: left;
 
   max-width: 400px;
@@ -15,8 +16,45 @@ export const PaginationWrapper = styled.div`
     position: relative;
     padding-left: 0;
 
-    &:hover {
-      cursor: pointer;
+    &:not(:disabled) {
+      &:before {
+        opacity: 0;
+        content: '';
+        transition: opacity 0.3s;
+      }
+    }
+
+    #icon-line rect {
+      fill: ${({ theme }) => theme.colors.mainIconLine};
+    }
+
+    #icon-left-arr rect,
+    #icon-right-arr rect {
+      fill: ${({ theme }) => theme.colors.mainIconArr};
+      transition: fill 0.2s;
+    }
+
+    &:not(:disabled) {
+      &:hover {
+        cursor: pointer;
+
+        &:before {
+          content: '';
+          position: absolute;
+          background-color: ${({ theme }) => theme.colors.mainIconArr};
+          opacity: 0.1;
+          border-radius: 20%;
+          width: 32px;
+          height: 26px;
+          left: 4px;
+          top: -5px;
+        }
+
+        #icon-left-arr rect,
+        #icon-right-arr rect {
+          fill: ${({ theme }) => darken(0.9, theme.colors.mainIconArr)};
+        }
+      }
     }
 
     svg {
