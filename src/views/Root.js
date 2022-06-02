@@ -6,18 +6,6 @@ import MainTemplate from '../components/templates/MainTemplate/MainTemplate';
 import Container from '../components/Container/Container';
 
 const Root = () => {
-  // useEffect(() => {
-  //   // .get(endpoints.products, { page: 1, limit: 2, id: 2 })
-  //   api
-  //     .get(endpoints.products, { page: 1, limit: 2, id: 2 })
-  //     .then(({ data }) => {
-  //       setData(data);
-  //       // console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       // console.log(error);
-  //     });
-  // }, []);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

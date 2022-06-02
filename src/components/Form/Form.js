@@ -7,7 +7,7 @@ const Form = ({ value, onInputChange, onSearch, onReset }) => {
     <FormWrapper>
       <InputWrapper onSubmit={onSearch}>
         <Label htmlFor="input-number" />
-        <Input id="input-number" value={value} onChange={onInputChange} placeholder="Enter your color number" />
+        <Input aria-label="input-number" value={value} onChange={onInputChange} placeholder="Enter your color number" />
       </InputWrapper>
       <SearchButton type="submit" onClick={onSearch}>
         Search

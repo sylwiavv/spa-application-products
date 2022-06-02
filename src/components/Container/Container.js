@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Form from '../Form/Form';
 import ProductsList from '../ProductsList/ProductsList';
 import Pagination from '../Pagination/Pagination';
-import axios from 'axios';
 import { api, endpoints } from '../../api';
 
 const Container = () => {
   const [inputValue, setInputValue] = useState('');
   const [dataAPI, setData] = useState([]);
-  const [totalPages, setTotalPages] = useState('');
+  const [totalPages, setTotalPages] = useState();
   const [page, setPage] = useState(1);
   const [error, setError] = useState('');
 

@@ -4,19 +4,19 @@ import { ReactComponent as LeftArrow } from '../../assets/icons/icon-left-arr.sv
 import { ReactComponent as RightArrow } from '../../assets/icons/icon-right-arr.svg';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from '../Form/Form';
 
 const Pagination = ({ onNextPage, onPrevPage, totalPages, page }) => {
   return (
     <PaginationWrapper>
-      <button onClick={onPrevPage} disabled={page === 1}>
+      <button data-testid="prev-page-button" onClick={onPrevPage} disabled={page === 1}>
         {page === 1 ? <Line /> : <LeftArrow />}
       </button>
       <PaginationWrapperPage>
         <PaginationActualPage>{page}</PaginationActualPage>
+        <span>/</span>
         <PaginationTotalPage>{totalPages}</PaginationTotalPage>
       </PaginationWrapperPage>
-      <button onClick={onNextPage} disabled={page === totalPages}>
+      <button data-testid="next-page-button" onClick={onNextPage} disabled={page === totalPages}>
         {page === totalPages ? <Line /> : <RightArrow />}
       </button>
     </PaginationWrapper>
