@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
   padding: 16px;
   max-width: 990px;
   height: 100vh;
+  max-height: 600px;
 `;
