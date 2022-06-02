@@ -66,7 +66,7 @@ export const PaginationWrapper = styled.div`
   span {
     display: flex;
     align-items: center;
-    margin: 0 16px;
+    margin: 0 4px;
   }
 `;
 
@@ -79,14 +79,6 @@ export const PaginationWrapperPage = styled.div`
 export const PaginationActualPage = styled.div`
   position: relative;
   font-weight: 700;
-
-  &:after {
-    content: ' / ';
-    color: ${({ theme }) => theme.colors.mainFontColor};
-    font-weight: 400;
-  }
 `;
 
-export const PaginationTotalPage = styled.div`
-  margin-left: 4px;
-`;
+export const PaginationTotalPage = styled.div``;

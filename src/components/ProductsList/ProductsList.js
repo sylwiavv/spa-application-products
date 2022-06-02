@@ -3,7 +3,6 @@ import { TABLE, THEAD, THEADtr, THEADth, TBODY, TBODYtr, TBODYtd } from './Produ
 import PropTypes from 'prop-types';
 
 const ProductsList = ({ products }) => {
-  console.log(products);
   return (
     <TABLE>
       <THEAD>
