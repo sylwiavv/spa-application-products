@@ -45,9 +45,4 @@ export const StyledTbodyTr = styled.tr`
 export const StyledTbodyTd = styled.td`
   padding: 16px 8px;
   align-content: center;
-  //border-radius: 4px;
-
-  //&:first-child {
-  //  border-radius: 50px;
-  //}
 `;

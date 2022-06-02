@@ -5,14 +5,14 @@ import userEvent from '@testing-library/user-event';
 import { renderWithThemeProvider } from '../../helpers/renderWithThemeProvider';
 import Pagination from './Pagination';
 
-describe('Pagination', () => {
+describe('Pagination component behavior', () => {
   it('Prev button is disabled after render', () => {
     renderWithThemeProvider(<Pagination page={1} />);
     const buttonPrev = screen.getByTestId('prev-page-button');
     expect(buttonPrev).toBeDisabled();
   });
 
-  it('Next', () => {
+  it('Test next callback function', () => {
     const onNextPage = jest.fn();
     renderWithThemeProvider(<Pagination onNextPage={onNextPage} page={1} totalPages={5} />);
     const buttonNext = screen.getByTestId('next-page-button');
@@ -20,7 +20,7 @@ describe('Pagination', () => {
     expect(onNextPage).toHaveBeenCalledTimes(1);
   });
 
-  it('Prev', () => {
+  it('Test prev callback function', () => {
     const onPrevPage = jest.fn();
     renderWithThemeProvider(<Pagination onPrevPage={onPrevPage} page={2} totalPages={5} />);
     const buttonPrev = screen.getByTestId('prev-page-button');
@@ -42,9 +42,4 @@ describe('Pagination', () => {
     expect(buttonNext).not.toBeDisabled();
     expect(buttonPrev).not.toBeDisabled();
   });
-
-  // it('Page number and total page number are in document', () => {
-  //   renderWithThemeProvider(<Pagination page={2} totalPages={5} />);
-  //   expect(25).toBeInTheDocument();
-  // });
 });
