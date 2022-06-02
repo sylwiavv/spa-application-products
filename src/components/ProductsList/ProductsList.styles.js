@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TABLE = styled.table`
+export const StyledTable = styled.table`
   border-spacing: 4px;
   border: 1px solid ${({ theme }) => theme.colors.mainBorderColor};
   border-radius: 4px;
@@ -11,15 +11,15 @@ export const TABLE = styled.table`
   max-width: 660px;
   width: 100%;
 `;
-export const THEAD = styled.thead``;
-export const THEADtr = styled.tr``;
-export const THEADth = styled.th`
+export const StyledThead = styled.thead``;
+export const StyledTheadTr = styled.tr``;
+export const StyledTheadTh = styled.th`
   font-size: 18px;
   padding: 0 8px 8px 0;
 `;
 
-export const TBODY = styled.tbody``;
-export const TBODYtr = styled.tr`
+export const StyledTbody = styled.tbody``;
+export const StyledTbodyTr = styled.tr`
   background-color: ${({ color }) => color};
 
   &:first-child {
@@ -42,7 +42,7 @@ export const TBODYtr = styled.tr`
   }
 `;
 
-export const TBODYtd = styled.td`
+export const StyledTbodyTd = styled.td`
   padding: 16px 8px;
   align-content: center;
   //border-radius: 4px;
