@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { renderWithThemeProvider } from '../../helpers/renderWithThemeProvider';
 
-it('Input accept only numbers', () => {
+it('On input change callback is called', () => {
   const onInputChange = jest.fn();
   renderWithThemeProvider(<Form value="inputValue" onInputChange={onInputChange} />);
   const inputSearch = screen.getByRole('textbox', { name: 'input-number' });
