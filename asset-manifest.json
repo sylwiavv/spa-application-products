@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/spa-application-products/static/css/main.57c80c35.css",
-    "main.js": "/spa-application-products/static/js/main.7641c28d.js",
+    "main.js": "/spa-application-products/static/js/main.d5f7975b.js",
     "index.html": "/spa-application-products/index.html",
     "static/media/icon-right-arr.svg": "/spa-application-products/static/media/icon-right-arr.9a8ff0b71c8a21dbea4b25b357b69b35.svg",
     "static/media/icon-left-arr.svg": "/spa-application-products/static/media/icon-left-arr.5c9462aa23d8bb4b44646371102cbf34.svg",
     "static/media/icon-line.svg": "/spa-application-products/static/media/icon-line.cbf0d085297b9aa27a48ced82a0a2af2.svg",
-    "main.7641c28d.js.map": "/spa-application-products/static/js/main.7641c28d.js.map"
+    "main.d5f7975b.js.map": "/spa-application-products/static/js/main.d5f7975b.js.map"
   },
   "entrypoints": [
     "static/css/main.57c80c35.css",
-    "static/js/main.7641c28d.js"
+    "static/js/main.d5f7975b.js"
   ]
 }
