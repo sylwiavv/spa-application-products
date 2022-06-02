@@ -27,5 +27,6 @@ npm run deploy
 #### You can check it on https://sylwiavv.github.io/spa-application-products/
 
 ### To do in teh future
+* Add handling 404 error.
 * Add more tests.
 * Add some nice animations.
