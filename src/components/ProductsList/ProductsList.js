@@ -2,8 +2,10 @@ import React from 'react';
 import { StyledTable, StyledThead, StyledTheadTr, StyledTheadTh, StyledTbody, StyledTbodyTr, StyledTbodyTd } from './ProductsList.styles';
 import PropTypes from 'prop-types';
 
-const ProductsList = ({ products }) => {
-  return (
+const ProductsList = ({ products, loading }) => {
+  return loading && products.length === 0 ? (
+    <h3>Loading...</h3>
+  ) : (
     <StyledTable>
       <StyledThead>
         <StyledTheadTr>
@@ -13,19 +15,13 @@ const ProductsList = ({ products }) => {
         </StyledTheadTr>
       </StyledThead>
       <StyledTbody>
-        {products.length > 0 ? (
-          products.map(({ id, name, color, year }) => (
-            <StyledTbodyTr key={id} color={color}>
-              <StyledTbodyTd>{id}</StyledTbodyTd>
-              <StyledTbodyTd className="name">{name}</StyledTbodyTd>
-              <StyledTbodyTd>{year}</StyledTbodyTd>
-            </StyledTbodyTr>
-          ))
-        ) : (
-          <StyledTbodyTr>
-            <StyledTbodyTd>No available products</StyledTbodyTd>
+        {products.map(({ id, name, color, year }) => (
+          <StyledTbodyTr key={id} color={color}>
+            <StyledTbodyTd>{id}</StyledTbodyTd>
+            <StyledTbodyTd className="name">{name}</StyledTbodyTd>
+            <StyledTbodyTd>{year}</StyledTbodyTd>
           </StyledTbodyTr>
-        )}
+        ))}
       </StyledTbody>
     </StyledTable>
   );
@@ -33,6 +29,7 @@ const ProductsList = ({ products }) => {
 
 ProductsList.propTypes = {
   products: PropTypes.array,
+  loading: PropTypes.bool,
 };
 
 export default ProductsList;

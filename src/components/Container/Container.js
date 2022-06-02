@@ -6,20 +6,24 @@ import { api, endpoints } from '../../api';
 
 const Container = () => {
   const [inputValue, setInputValue] = useState('');
-  const [dataAPI, setData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
   const [totalPages, setTotalPages] = useState();
   const [page, setPage] = useState(1);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+  const errorMessage = `Sorry, we can't fetch products.`;
 
   useEffect(() => {
     if (page !== null) {
       api
         .get(endpoints.products, { params: { per_page: 5, page } })
         .then(({ data }) => {
-          setData(data.data);
+          setProductsData(data.data);
           setTotalPages(data.total_pages);
+          setLoading(false);
+          setError('');
         })
-        .catch(() => setError(`Sorry we couldn't show you products`));
+        .catch(() => setError(errorMessage));
     }
   }, [page]);
 
@@ -29,9 +33,9 @@ const Container = () => {
       api
         .get(endpoints.products, { params: { id: inputValue } })
         .then(({ data }) => {
-          setData([data.data]);
+          setProductsData([data.data]);
         })
-        .catch(() => setError(`Sorry we couldn't show you products`));
+        .catch(() => setError(errorMessage));
       setInputValue('');
       setPage(null);
     }
@@ -61,8 +65,14 @@ const Container = () => {
   return (
     <>
       <Form value={inputValue} onInputChange={onInputChange} onSearch={onSearch} onReset={onReset} />
-      <ProductsList products={dataAPI} />
-      {page && <Pagination page={page} totalPages={totalPages} onPrevPage={onPrevPage} onNextPage={onNextPage} />}
+      {error ? (
+        error
+      ) : (
+        <>
+          <ProductsList loading={loading} products={productsData} />
+          {page && <Pagination page={page} totalPages={totalPages} onPrevPage={onPrevPage} onNextPage={onNextPage} />}
+        </>
+      )}
     </>
   );
 };
