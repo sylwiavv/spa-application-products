@@ -24,7 +24,7 @@ npm run deploy
 * You can switch pages with pagination (prev, next).
 * You can turn back to the first page from each view from app.
 
-#### You can check it on https://sylwiavv.github.io/autocomplete_js/
+#### You can check it on https://sylwiavv.github.io/spa-application-products/
 
 ### To do in teh future
 * Add more tests.
