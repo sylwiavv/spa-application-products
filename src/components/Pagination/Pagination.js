@@ -1,4 +1,4 @@
-import { PaginationWrapper, PaginationWrapperPage, PaginationActualPage, PaginationTotalPage } from './Pagination.styles';
+import { PaginationWrapper, PaginationWrapperPage, PaginationActualPage, PaginationTotalPages } from './Pagination.styles';
 import { ReactComponent as Line } from '../../assets/icons/icon-line.svg';
 import { ReactComponent as LeftArrow } from '../../assets/icons/icon-left-arr.svg';
 import { ReactComponent as RightArrow } from '../../assets/icons/icon-right-arr.svg';
@@ -14,7 +14,7 @@ const Pagination = ({ onNextPage, onPrevPage, totalPages, page }) => {
       <PaginationWrapperPage>
         <PaginationActualPage>{page}</PaginationActualPage>
         <span>/</span>
-        <PaginationTotalPage>{totalPages}</PaginationTotalPage>
+        <PaginationTotalPages>{totalPages}</PaginationTotalPages>
       </PaginationWrapperPage>
       <button data-testid="next-page-button" onClick={onNextPage} disabled={page === totalPages}>
         {page === totalPages ? <Line /> : <RightArrow />}

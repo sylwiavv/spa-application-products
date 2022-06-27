@@ -81,4 +81,4 @@ export const PaginationActualPage = styled.div`
   font-weight: 700;
 `;
 
-export const PaginationTotalPage = styled.div``;
+export const PaginationTotalPages = styled.div``;
