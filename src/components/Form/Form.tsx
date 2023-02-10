@@ -1,8 +1,14 @@
 import { Input, Label, FormWrapper, InputWrapper, SearchButton, ResentButton } from './Form.styles';
-import PropTypes from 'prop-types';
 import React from 'react';
 
-const Form = ({ value, onInputChange, onSearch, onReset }) => {
+interface Props {
+  value: number;
+  onInputChange: () => void;
+  onSearch: () => void;
+  onReset: () => void;
+}
+
+const Form = ({ value, onInputChange, onSearch, onReset }: Props) => {
   return (
     <FormWrapper>
       <InputWrapper onSubmit={onSearch}>
@@ -15,13 +21,6 @@ const Form = ({ value, onInputChange, onSearch, onReset }) => {
       <ResentButton onClick={onReset}>Reset</ResentButton>
     </FormWrapper>
   );
-};
-
-Form.propTypes = {
-  value: PropTypes.string,
-  onInputChange: PropTypes.func,
-  onSearch: PropTypes.func,
-  onReset: PropTypes.func,
 };
 
 export default Form;
