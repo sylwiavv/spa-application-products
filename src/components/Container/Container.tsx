@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import Form from '../Form/Form';
 import ProductsList from '../ProductsList/ProductsList';
-import Pagination from '../Pagination/Pagination';
 import { api, endpoints } from '../../api';
+import Pagination from '../Pagination/Pagination';
+
+interface Product {
+  color: string;
+  id: number;
+  name: string;
+  pantone_value: string;
+  year: number;
+}
 
 const Container = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [productsData, setProductsData] = useState([]);
-  const [totalPages, setTotalPages] = useState();
-  const [page, setPage] = useState(1);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
-  const errorMessage = `Sorry, we can't fetch products.`;
+  const [inputValue, setInputValue] = useState<number | ''>('');
+  const [productsData, setProductsData] = useState<Array<Product>>([]);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [page, setPage] = useState<number | null>();
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const errorMessage: string = `Sorry, we can't fetch products.`;
 
   useEffect(() => {
     if (page !== null) {
@@ -27,35 +36,38 @@ const Container = () => {
     }
   }, [page]);
 
-  const onSearch = (e) => {
+  const onSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue !== '') {
       api
         .get(endpoints.products, { params: { id: inputValue } })
         .then(({ data }) => {
-          setProductsData([data.data]);
+          setProductsData([data.data as Product]);
         })
         .catch(() => setError(errorMessage));
+
       setInputValue('');
       setPage(null);
     }
   };
 
-  const onInputChange = (e) => {
-    const result = e.target.value.replace(/[^0-9]/g, '');
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const result: number = Number(e.target.value.replace(/[^0-9]/g, ''));
     setInputValue(result);
   };
 
   const onNextPage = () => {
-    if (totalPages > page) {
-      setPage(page + 1);
-    }
+    if (page)
+      if (totalPages > page) {
+        setPage(page + 1);
+      }
   };
 
   const onPrevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
+    if (page)
+      if (page > 1) {
+        setPage(page - 1);
+      }
   };
 
   const onReset = () => {

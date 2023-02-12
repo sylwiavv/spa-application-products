@@ -11,6 +11,7 @@
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
     "axios": "^0.27.2",
     "axios-hooks": "^3.0.4",
     "axios-mock-adapter": "^1.20.0",
@@ -29,7 +30,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint . --ext .tsx"
   },
   "browserslist": {
     "production": [

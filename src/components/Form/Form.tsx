@@ -2,9 +2,9 @@ import { Input, Label, FormWrapper, InputWrapper, SearchButton, ResentButton } f
 import React from 'react';
 
 interface Props {
-  value: number;
-  onInputChange: () => void;
-  onSearch: () => void;
+  value: number | '';
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearch: (e: React.FormEvent) => void;
   onReset: () => void;
 }
 

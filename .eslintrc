@@ -3,11 +3,15 @@
     "react-app",
     "react-app/jest",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "@typescript-eslint/no-inferrable-types": "off"
   },
   "env": {
     "browser": true,
@@ -15,5 +19,5 @@
     "es6": true,
     "jest": true
   },
-  "parser": "@babel/eslint-parser"
+  "parser": "@typescript-eslint/parser"
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
-import Container from '../components/Container/Container';
 import { MainTemplateWrapper } from '../components/templates/MainTemplate/MainTemplate.styles';
+import Container from '../components/Container/Container';
 
 const Root = () => {
   return (
