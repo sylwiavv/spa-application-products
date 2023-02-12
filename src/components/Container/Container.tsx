@@ -16,7 +16,7 @@ const Container = () => {
   const [inputValue, setInputValue] = useState<number | ''>('');
   const [productsData, setProductsData] = useState<Array<Product>>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [page, setPage] = useState<number | null>();
+  const [page, setPage] = useState<number | null>(1);
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -73,6 +73,7 @@ const Container = () => {
   const onReset = () => {
     setPage(1);
   };
+  console.log(page);
 
   return (
     <>
